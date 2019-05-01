@@ -16,25 +16,28 @@ function HomeController(MovieService, $q) {
           MovieService.fetchMovies()
           .then( (response) => {
 
-            // Get children from data
+         // Get children from data
             // let children = response.data.data.children;
-            let results = response.results;
+            let results = response;
+            console.log(response);
             
             // Organize in to objects for each one
-            results.forEach( function(results, index) {
+            response.data.results.forEach( function(child) {
               let childObj = {
-                title: results.title, 
+                title: child.original_title, 
             }
-
+            console.log(child.original_title);
             // Add to search array
               ctrl.search.push(childObj);
-              console.log(response);
+              // console.log(response);
+              console.log(childObj);
             
             // Resolve the promise
-            if ( index === (results.length -1) ) {
+            if ( child === (results.length -1) ) {
               resolve();
             }
           });
+
 
 //             console.log(response);
 //             // Do something with this data
@@ -62,7 +65,7 @@ function HomeController(MovieService, $q) {
   <input type="text" ng-model="search" placeholder="Search" />
   input type="text" ng-model="search" placeholder="Search" 
     <ul>
-      <li> ng-repeat="post in ctrl.search | orderBy: "name" | filter: search <input type="submit" value="Add to Watch List" /></li>
+      <li ng-repeat="post in $ctrl.search | orderBy: "title" | filter: "search"> <input type="submit" value="Add to Watch List" />"> {{post.title}} </li>
     </ul>
 </div>
 
