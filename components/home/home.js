@@ -17,14 +17,13 @@ function HomeController(MovieService, $q) {
           .then( (response) => {
 
             // Get children from data
-            let children = response.data.data.children;
+            // let children = response.data.data.children;
+            let results = response.results;
             
             // Organize in to objects for each one
-            children.forEach( function(child, index) {
+            results.forEach( function(results, index) {
               let childObj = {
-                title: child.data.title,
-                img: child.data.thumbnail,
-                permalink: child.data.permalink
+                title: results.title, 
             }
 
             // Add to search array
@@ -32,7 +31,7 @@ function HomeController(MovieService, $q) {
               console.log(response);
             
             // Resolve the promise
-            if ( index === (children.length -1) ) {
+            if ( index === (results.length -1) ) {
               resolve();
             }
           });
@@ -56,12 +55,16 @@ function HomeController(MovieService, $q) {
   angular.module('MovieApp').component('home', {
     template: `
         <section id="home">
-            <h3>Home</h3>
-        <p>Search box here?</p>
 
-        <input type="text" placeholder="Search" />
-
-
+    <h3>Search Movies  (home.js)</h3>
+  
+<div class="containter">
+  <input type="text" ng-model="search" placeholder="Search" />
+  input type="text" ng-model="search" placeholder="Search" 
+    <ul>
+      <li> ng-repeat="post in ctrl.search | orderBy: "name" | filter: search <input type="submit" value="Add to Watch List" /></li>
+    </ul>
+</div>
 
         </section>`, // or use templateUrl
     controller: HomeController
