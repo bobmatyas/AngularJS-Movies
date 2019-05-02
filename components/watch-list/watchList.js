@@ -6,9 +6,11 @@ function WatchListController(MovieService) {
     console.log(`watch list page`);
 
     console.log(ctrl.watchList);
+
+    
 }
   
-  angular.module('MovieApp').component('watchList', {
+  angular.module('MovieApp').component('watchlistPage', {
     template: `
         <section id="watch-list">
             <h3>Watch List</h3>

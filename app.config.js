@@ -16,7 +16,7 @@ angular
       })
       .when("/watch-list", {
         // Load the watch-list component
-        template: "<watch-list></watch-list>"
+        template: "<watchlist-page></watchlist-page>"
       })
       
 
