@@ -24,9 +24,10 @@ function HomeController(MovieService, $q) {
             // Organize in to objects for each one
             response.data.results.forEach( function(child) {
               let childObj = {
-                title: child.original_title, 
+                title: child.title,
+                poster: child.poster_path 
             }
-            console.log(child.original_title);
+            //console.log(child.original_title);
             // Add to search array
               ctrl.search.push(childObj);
               // console.log(response);
@@ -62,11 +63,13 @@ function HomeController(MovieService, $q) {
     <h3>Search Movies  (home.js)</h3>
   
 <div class="containter">
-  <input type="text" ng-model="search" placeholder="Search" />
-  input type="text" ng-model="search" placeholder="Search" 
-    <ul>
-      <li ng-repeat="post in $ctrl.search | orderBy: "title" | filter: "search"> <input type="submit" value="Add to Watch List" />"> {{post.title}} </li>
-    </ul>
+  <input type="text" ng-model="homeSearch" placeholder="Search" />
+    <div class="search-result-container">
+    <!--   -->
+      <div class="search-result-container-item" ng-repeat="post in $ctrl.search | filter: homeSearch">
+        <div class="search-result-photo"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.poster}}" /> </div> <div><h2>{{post.title}}</h2>  <button ng-click="addToWatchList()" />Add to Watch List </button> </div>
+      </div>
+    </div>
 </div>
 
         </section>`, // or use templateUrl
