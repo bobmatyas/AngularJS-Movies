@@ -4,11 +4,20 @@ function HomeController(MovieService, $q) {
       // List of reddit posts to display    
       ctrl.search = [];
       // ctrl.show = false;
-    
-      /**
-       * Call https://www.reddit.com/r/aww/.json
-       * and set ctrl.search to be the results
-       */
+
+      ctrl.watchList = [];
+
+      ctrl.addToWatchList = (movieId) => {
+        console.log(`add to watch list clicked`);
+        if (ctrl.watchList.length >= 1) {
+          doesExist = ctrl.watchList.includes(movieId);
+          if (doesExist === false) {
+            ctrl.watchList.push(movieId);
+          }
+        } else {
+            ctrl.watchList.push(movieId);
+        }
+      }
 
       ctrl.fetchMovies = () => {
         // Call service, then set our data
@@ -19,19 +28,23 @@ function HomeController(MovieService, $q) {
          // Get children from data
             // let children = response.data.data.children;
             let results = response;
-            console.log(response);
+            //console.log(response);
             
             // Organize in to objects for each one
             response.data.results.forEach( function(child) {
               let childObj = {
-                title: child.title,
-                poster: child.poster_path 
-            }
+                movie_id: child.id,
+                movie_title: child.title,
+                movie_poster: child.poster_path 
+              }
+
+            console.log(child);
+
             //console.log(child.original_title);
             // Add to search array
               ctrl.search.push(childObj);
               // console.log(response);
-              console.log(childObj);
+              //console.log(childObj);
             
             // Resolve the promise
             if ( child === (results.length -1) ) {
@@ -67,7 +80,7 @@ function HomeController(MovieService, $q) {
     <div class="search-result-container">
     <!--   -->
       <div class="search-result-container-item" ng-repeat="post in $ctrl.search | filter: homeSearch">
-        <div class="search-result-photo"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.poster}}" /> </div> <div><h2>{{post.title}}</h2>  <button ng-click="addToWatchList()" />Add to Watch List </button> </div>
+        <div class="search-result-photo"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.movie_poster}}" /> </div> <div><h2>{{post.movie_title}}</h2>  <button ng-click="$ctrl.addToWatchList(post.movie_id)" />Add to Watch List </button> </div>
       </div>
     </div>
 </div>
