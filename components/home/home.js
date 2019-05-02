@@ -1,8 +1,10 @@
 function HomeController(MovieService, $q) {
     const ctrl = this;
 
-      // List of reddit posts to display    
+      // List of movies to parse    
       ctrl.search = [];
+
+
       // ctrl.show = false;
 
       ctrl.watchList = [];
@@ -17,6 +19,7 @@ function HomeController(MovieService, $q) {
         } else {
             ctrl.watchList.push(movieId);
         }
+        console.log(`current watch list: ${ctrl.watchList}`);  
       }
 
       ctrl.fetchMovies = () => {
@@ -80,8 +83,10 @@ function HomeController(MovieService, $q) {
     <div class="search-result-container">
     <!--   -->
       <div class="search-result-container-item" ng-repeat="post in $ctrl.search | filter: homeSearch">
-        <div class="search-result-photo"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.movie_poster}}" /> </div> <div><h2>{{post.movie_title}}</h2>  <button ng-click="$ctrl.addToWatchList(post.movie_id)" />Add to Watch List </button> </div>
-      </div>
+        <div class="search-result-photo"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.movie_poster}}" /> </div> <div class="search-result-contents"><h2>{{post.movie_title}}</h2>
+          <i class="far fa-heart" ng-click="$ctrl.addToWatchList(post.movie_id)">Add to Favorites</i> </div>
+          <!--- fas fa-heart for solid -->
+        </div>
     </div>
 </div>
 

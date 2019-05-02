@@ -50,6 +50,13 @@ a:link, a:visited {
     box-shadow: 5cm;
   }
 
+.search-result-container-item {
+  display: flex;
+}
+
+.search-result-contents {
+  padding: 0 25px;
+}
 
 
 
