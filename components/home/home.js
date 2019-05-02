@@ -7,61 +7,45 @@ function HomeController(MovieService, $q) {
 
       // ctrl.show = false;
 
-      ctrl.watchList = [];
+      //ctrl.watchList = [];
 
+      console.log(MovieService.watchList);
       ctrl.addToWatchList = (movieId) => {
         console.log(`add to watch list clicked`);
-        if (ctrl.watchList.length >= 1) {
-          doesExist = ctrl.watchList.includes(movieId);
+        if (MovieService.watchList.length >= 1) {
+          doesExist = MovieService.watchList.includes(movieId);
           if (doesExist === false) {
-            ctrl.watchList.push(movieId);
+            MovieService.watchList.push(movieId);
           }
         } else {
-            ctrl.watchList.push(movieId);
+            MovieService.watchList.push(movieId);
         }
-        console.log(`current watch list: ${ctrl.watchList}`);  
+        console.log(`current watch list: ${MovieService.watchList}`);  
       }
 
       ctrl.fetchMovies = () => {
         // Call service, then set our data
         return $q(function(resolve, reject) {
           MovieService.fetchMovies()
-          .then( (response) => {
+            .then( (response) => {
 
-         // Get children from data
-            // let children = response.data.data.children;
-            let results = response;
-            //console.log(response);
-            
-            // Organize in to objects for each one
-            response.data.results.forEach( function(child) {
-              let childObj = {
-                movie_id: child.id,
-                movie_title: child.title,
-                movie_poster: child.poster_path 
-              }
+              let results = response;
+              //console.log(response);
+              
+              response.data.results.forEach( function(child) {
+                let childObj = {
+                 movie_id: child.id,
+                 movie_title: child.title,
+                 movie_poster: child.poster_path 
+               }
 
-            console.log(child);
-
-            //console.log(child.original_title);
-            // Add to search array
               ctrl.search.push(childObj);
-              // console.log(response);
-              //console.log(childObj);
-            
-            // Resolve the promise
-            if ( child === (results.length -1) ) {
-              resolve();
-            }
+
+              if ( child === (results.length -1) ) {
+                resolve();
+             }
           });
 
-
-//             console.log(response);
-//             // Do something with this data
-
-//             data.data.forEach( (item) => {
-//               ctrl.search.push(`{title:response.data.data.children[i].data.author}`);
-            
           });
         });
       };
