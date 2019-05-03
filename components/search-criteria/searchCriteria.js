@@ -1,5 +1,10 @@
 function SearchCriteriaController() {
     var ctrl = this;
+
+    ctrl.fetchMovies({
+        search: searchValues
+    })
+
 }
   
   angular.module('MovieApp').component('searchCriteria', {
@@ -8,5 +13,8 @@ function SearchCriteriaController() {
             <h3>Search Criteria</h3>
             <p>This Works!</p>
         </section>`, // or use templateUrl
-    controller: SearchCriteriaController
+    controller: SearchCriteriaController,
+    bindings: {
+        fetchMovies: "&"
+    }
   });
