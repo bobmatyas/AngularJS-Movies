@@ -44,7 +44,8 @@ function SearchResultsController(MovieService, $q) {
               movie_id: child.id,
               movie_title: child.title,
               movie_poster: child.poster_path,
-              movie_popularity: child.popularity,
+              movie_overview: child.overview,
+              movie_popularity: child.vote_average,
               movie_release_date: child.release_date,
               movie_original_language: child.original_language,
             }
@@ -60,19 +61,22 @@ function SearchResultsController(MovieService, $q) {
     });
   };
 
-  ctrl.propertyName = 'movie_popularity';
-  ctrl.reverse = false;
+  ctrl.propertyName = '';
+  ctrl.reverse = '';
 
-  ctrl.sortBy = function(propertyName) {
-    console.log(`sort clicked`);
+  ctrl.sortBy = function(propertyName, sortOrder) {
     console.log(propertyName);
-    ctrl.reverse = (ctrl.propertyName === propertyName) ? !ctrl.reverse : false;
-    ctrl.propertyName = propertyName;
-    console.log(ctrl.reverse);
-    console.log(propertyName);
+    console.log(`initial sortOrder: ${sortOrder}`)
+    //ctrl.reverse = (ctrl.propertyName === propertyName) ? !ctrl.reverse : false;
+    ctrl.propertyName = propertyName
+    if (sortOrder) {
+      ctrl.reverse = 'reverse';
+    } else {
+      ctrl.reverse = '';;
+    }
+    console.log(ctrl.propertyName);
   };
 
-  console.log(ctrl.propertyName);
 }
 
 angular.module('MovieApp').component('searchResults', {
@@ -81,17 +85,22 @@ angular.module('MovieApp').component('searchResults', {
             
 
       <label>Sort by Title: 
-        <select id="title" ng-change="$ctrl.sortBy('movie_title')" ng-model="sort_by_title">
-          <option value="ascending" ng-click="$ctrl.sortBy('movie_title')">A-Z</option>
-          <option value="descending" ng-click="$ctrl.sortBy('movie_title')">Z-A</option>
+        <select id="title" ng-change="$ctrl.sortBy('movie_title', $ctrl.sort_by_title)" ng-model="$ctrl.sort_by_title">
+          <option selected></option>
+          <option value="">A-Z</option>
+          <option value="reverse">Z-A</option>
+        </select>
+      </label>
+
+      <label>Sort by Popularity: 
+        <select id="popularity" ng-change="$ctrl.sortBy('movie_popularity', $ctrl.sort_by_popularity)" ng-model="$ctrl.sort_by_popularity">
+          <option value="reverse">Highest Rated</option>
+          <option value="">Lowest Rated</option>
         </select>
       </label>
       
       <br>
-      <button ng-click="$ctrl.sortBy('movie_title')">Title</button>
-        <p class="sortorder" ng-show="$ctrl.propertyName === 'movie_title'" ng-class="{reverse: reverse}"> reverse</p>
-
-                
+  
             <search-criteria fetch-movies="$ctrl.fetchMovies(search)"></search-criteria>
 
 
@@ -101,11 +110,11 @@ angular.module('MovieApp').component('searchResults', {
       <div class="search-result-container-item" ng-repeat="post in $ctrl.search | orderBy: $ctrl.propertyName:$ctrl.reverse">
         <div class="search-result-photo"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.movie_poster}}" /> </div> <div class="search-result-contents"><h2>{{post.movie_title}}</h2>
           <i class="far fa-heart" ng-click="$ctrl.addToWatchList(post.movie_id)">Add to Favorites</i>
-          <p>Popularity: {{post.movie_vote_average}}</p>
+          <p>Popularity: {{post.movie_popularity}}</p>
           <p>Release Date: {{post.movie_release_date}}</p>
           <p>Original Language: {{post.movie_original_language}}</p>
-          </div>
           <!--- fas fa-heart for solid -->
+          <p>{{ post.movie_overview }}</p>
         </div>
     </div>
 
