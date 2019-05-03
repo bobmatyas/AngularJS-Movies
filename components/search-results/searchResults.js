@@ -108,7 +108,11 @@ angular.module('MovieApp').component('searchResults', {
     <div class="search-result-container">
     <!--   -->
       <div class="search-result-container-item" ng-repeat="post in $ctrl.search | orderBy: $ctrl.propertyName:$ctrl.reverse">
-        <div class="search-result-photo"><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.movie_poster}}" /> </div> <div class="search-result-contents"><h2>{{post.movie_title}}</h2>
+        <div class="search-result-photo">
+          <img ng-if="post.movie_poster" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.movie_poster}}" /> 
+        </div> 
+        
+        <div class="search-result-contents"><h2>{{post.movie_title}}</h2>
           <i class="far fa-heart" ng-click="$ctrl.addToWatchList(post.movie_id)">Add to Favorites</i>
           <p>Popularity: {{post.movie_popularity}}</p>
           <p>Release Date: {{post.movie_release_date}}</p>
