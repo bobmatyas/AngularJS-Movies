@@ -1,12 +1,6 @@
 function SearchResultsController(MovieService, $q) {
   var ctrl = this;
 
-  // ctrl.fetchMovies = (search) => {
-  //   Service.fetchMovies(search)
-  //     .then((movies) => {
-  //       ctrl.movies = movies
-  //     })
-  // }
 
   // List of movies to parse    
   ctrl.search = [];
@@ -37,10 +31,16 @@ function SearchResultsController(MovieService, $q) {
     console.log(`current watch list: ${MovieService.watchList}`);
   }
 
+  // this sets a variable for first page load, changes to "true" if users have searched
+
+  ctrl.searchCompleted = false; 
+
   ctrl.fetchMovies = (search, page) => {
     // Call service, then set our data
     console.log("This was clicked");
+
     return $q(function (resolve, reject) {
+      ctrl.searchCompleted = true;
       MovieService.fetchMovies(search, page)
         .then((response) => {
 
@@ -50,6 +50,8 @@ function SearchResultsController(MovieService, $q) {
           
           console.log(`Total pages of results: ${response.data.total_pages}`);
           
+          
+
           /* this sets up pagination */
 
           let totalPages = response.data.total_pages;
@@ -64,8 +66,6 @@ function SearchResultsController(MovieService, $q) {
             }
             ctrl.paginationMenu.push(paginationLink);
           }
-
-          console.log(ctrl.paginationMenu);
 
           /* this loops through results */
 
@@ -114,35 +114,8 @@ function SearchResultsController(MovieService, $q) {
 angular.module('MovieApp').component('searchResults', {
   template: `
       <section id="search-results">
-            
-
-      <label>Sort by Title: 
-        <select id="title" ng-change="$ctrl.sortBy('movie_title', $ctrl.sort_by_title)" ng-model="$ctrl.sort_by_title">
-          <option selected></option>
-          <option value="">A-Z</option>
-          <option value="reverse">Z-A</option>
-        </select>
-      </label>
-
-      <label>Sort by Popularity: 
-        <select id="popularity" ng-change="$ctrl.sortBy('movie_popularity', $ctrl.sort_by_popularity)" ng-model="$ctrl.sort_by_popularity">
-          <option value="reverse">Highest Rated</option>
-          <option value="">Lowest Rated</option>
-        </select>
-      </label>
-
-      <label>Sort by Release Date: 
-      <select id="releaseDate" ng-change="$ctrl.sortBy('movie_release_date', $ctrl.sort_by_release_date)" ng-model="$ctrl.sort_by_release_date">
-        <option value="reverse">Newest</option>
-        <option value="">Oldest</option>
-      </select>
-    </label>
-
-
-      
-      <br>
-  
-            <search-criteria fetch-movies="$ctrl.fetchMovies(search)"></search-criteria>
+              
+      <search-criteria fetch-movies="$ctrl.fetchMovies(search)" sort-by="$ctrl.sortBy(propertyName, sortOrder)" search-completed="$ctrl.searchCompleted"></search-criteria>
 
 
 
@@ -164,7 +137,8 @@ angular.module('MovieApp').component('searchResults', {
         </div>
     </div>
 
-    <div class="pagination-container">
+    <div class="pagination-container" ng-if="$ctrl.searchCompleted === true">
+    <h3>Pagination (this needs to be worked on in terms of UI, but it works)</h3>
       <div class="pagination-link" ng-repeat="link in $ctrl.paginationMenu">
         <div ng-click="$ctrl.fetchMovies(link.search_term, link.page)">{{ link.page }}</div>
       </div>
