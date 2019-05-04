@@ -1,12 +1,12 @@
 function SearchResultsController(MovieService, $q) {
   var ctrl = this;
 
-  ctrl.fetchMovies = (search) => {
-    Service.fetchMovies(search)
-      .then((movies) => {
-        ctrl.movies = movies
-      })
-  }
+  // ctrl.fetchMovies = (search) => {
+  //   Service.fetchMovies(search)
+  //     .then((movies) => {
+  //       ctrl.movies = movies
+  //     })
+  // }
 
   // List of movies to parse    
   ctrl.search = [];
@@ -61,12 +61,15 @@ function SearchResultsController(MovieService, $q) {
     });
   };
 
+
+  /**
+   * This section handles the sorting filters. 
+   */
+  
   ctrl.propertyName = '';
   ctrl.reverse = '';
 
   ctrl.sortBy = function(propertyName, sortOrder) {
-    console.log(propertyName);
-    console.log(`initial sortOrder: ${sortOrder}`)
     //ctrl.reverse = (ctrl.propertyName === propertyName) ? !ctrl.reverse : false;
     ctrl.propertyName = propertyName
     if (sortOrder) {
@@ -74,14 +77,13 @@ function SearchResultsController(MovieService, $q) {
     } else {
       ctrl.reverse = '';;
     }
-    console.log(ctrl.propertyName);
   };
 
 }
 
 angular.module('MovieApp').component('searchResults', {
   template: `
-        <section id="search-results">
+      <section id="search-results">
             
 
       <label>Sort by Title: 
@@ -98,6 +100,15 @@ angular.module('MovieApp').component('searchResults', {
           <option value="">Lowest Rated</option>
         </select>
       </label>
+
+      <label>Sort by Release Date: 
+      <select id="releaseDate" ng-change="$ctrl.sortBy('movie_release_date', $ctrl.sort_by_release_date)" ng-model="$ctrl.sort_by_release_date">
+        <option value="reverse">Newest</option>
+        <option value="">Oldest</option>
+      </select>
+    </label>
+
+
       
       <br>
   
