@@ -1,3 +1,3 @@
 "use strict";
 // setter syntax
-angular.module("MovieApp", ["ngRoute", "ngSanitize"]);
+angular.module("MovieApp", ["ngRoute"]);

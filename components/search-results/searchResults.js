@@ -54,10 +54,15 @@ function SearchResultsController(MovieService, $q) {
 
           let totalPages = response.data.total_pages;
 
-          ctrl.paginationMenu = '';
+          ctrl.paginationMenu = [];
 
           for (let i = 1; i <= totalPages; i++ ) {
-            ctrl.paginationMenu = `${ctrl.paginationMenu}<div class="pagination-link"><a href="">${i}</a></div>`;
+            // ctrl.paginationMenu = `${ctrl.paginationMenu}<div class="pagination-link" ng-click="$ctrl.fetchMovies('${search}', ${i})">page: ${i}</div>`;
+            let paginationLink = {
+              page: i,
+              search_term: search
+            }
+            ctrl.paginationMenu.push(paginationLink);
           }
 
           console.log(ctrl.paginationMenu);
@@ -158,8 +163,10 @@ angular.module('MovieApp').component('searchResults', {
         </div>
     </div>
 
-    <div class="pagination-container" ng-bind-html="$ctrl.paginationMenu">
-     
+    <div class="pagination-container">
+      <div class="pagination-link" ng-repeat="link in $ctrl.paginationMenu">
+        <div ng-click="$ctrl.fetchMovies(link.search_term, link.page)">{{ link.page }}</div>
+      </div>
     </div>
     </section>`, // or use templateUrl
   controller: SearchResultsController
