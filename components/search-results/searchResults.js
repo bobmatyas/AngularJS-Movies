@@ -150,7 +150,8 @@ angular.module('MovieApp').component('searchResults', {
     <!--   -->
       <div class="search-result-container-item" ng-repeat="post in $ctrl.search | orderBy: $ctrl.propertyName:$ctrl.reverse">
         <div class="search-result-photo">
-          <img ng-if="post.movie_poster" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.movie_poster}}" /> 
+          <img ng-if="post.movie_poster" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.movie_poster}}" alt="poster for {{post.movie_title}}" /> 
+          <img ng-if="!post.movie_poster" src="imgs/cover-placeholder.png" alt="poster for {{ post.movie_title }}" /> 
         </div> 
         
         <div class="search-result-contents"><h2>{{post.movie_title}}</h2>
