@@ -17,7 +17,6 @@ function MovieService(http) {
         //         limit: 10 
         //     }
         }
-        console.log(`woop woop`);
     };
     
 

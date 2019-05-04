@@ -15,7 +15,15 @@ function SearchResultsController(MovieService, $q) {
 
   //ctrl.watchList = [];
 
-  console.log(MovieService.watchList);
+  /**
+   * The addToWatchList function takes the parameter movieId and adds that to the watchList
+   * array that is stored in the service. 
+   * 
+   * The function is called in the ng-repeat for the search results. 
+   * 
+  */
+  
+
   ctrl.addToWatchList = (movieId) => {
     console.log(`add to watch list clicked`);
     if (MovieService.watchList.length >= 1) {
