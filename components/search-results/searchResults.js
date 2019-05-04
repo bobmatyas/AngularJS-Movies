@@ -37,16 +37,33 @@ function SearchResultsController(MovieService, $q) {
     console.log(`current watch list: ${MovieService.watchList}`);
   }
 
-  ctrl.fetchMovies = (search) => {
+  ctrl.fetchMovies = (search, page) => {
     // Call service, then set our data
     console.log("This was clicked");
     return $q(function (resolve, reject) {
-      MovieService.fetchMovies(search)
+      MovieService.fetchMovies(search, page)
         .then((response) => {
 
           let results = response;
           //console.log(response);
           ctrl.search = [];
+          
+          console.log(`Total pages of results: ${response.data.total_pages}`);
+          
+          /* this sets up pagination */
+
+          let totalPages = response.data.total_pages;
+
+          ctrl.paginationMenu = '';
+
+          for (let i = 1; i <= totalPages; i++ ) {
+            ctrl.paginationMenu = `${ctrl.paginationMenu}<div class="pagination-link"><a href="">${i}</a></div>`;
+          }
+
+          console.log(ctrl.paginationMenu);
+
+          /* this loops through results */
+
           response.data.results.forEach(function (child) {
             let childObj = {
               movie_id: child.id,
@@ -141,6 +158,9 @@ angular.module('MovieApp').component('searchResults', {
         </div>
     </div>
 
-        </section>`, // or use templateUrl
+    <div class="pagination-container" ng-bind-html="$ctrl.paginationMenu">
+     
+    </div>
+    </section>`, // or use templateUrl
   controller: SearchResultsController
 });
