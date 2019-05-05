@@ -13,7 +13,7 @@ function HomeController(MovieService, $q) {
     template: `
         <section id="home">
 
-    <h3>Search Movies  (home.js)</h3>
+    <h1>Search Movies</h1>
   <search-results></search-results>
 
         </section>`, // or use templateUrl

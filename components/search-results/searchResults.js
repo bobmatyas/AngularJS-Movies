@@ -1,4 +1,4 @@
-function SearchResultsController(MovieService, $q) {
+function SearchResultsController(MovieService, $q, $scope) {
   var ctrl = this;
 
 
@@ -73,7 +73,7 @@ function SearchResultsController(MovieService, $q) {
             let childObj = {
               movie_id: child.id,
               movie_title: child.title,
-              movie_poster: child.poster_path,
+              movie_poster: child.poster_path ? "https://image.tmdb.org/t/p/w185_and_h278_bestv2/" + child.poster_path : 'imgs/cover-placeholder.png',
               movie_overview: child.overview,
               movie_popularity: child.vote_average,
               movie_release_date: child.release_date,
@@ -90,8 +90,6 @@ function SearchResultsController(MovieService, $q) {
         });
     });
   };
-
-
   /**
    * This section handles the sorting filters. 
    */
@@ -109,7 +107,12 @@ function SearchResultsController(MovieService, $q) {
     }
   };
 
+
+
 }
+
+
+
 
 angular.module('MovieApp').component('searchResults', {
   template: `
@@ -120,25 +123,12 @@ angular.module('MovieApp').component('searchResults', {
 
 
     <div class="search-result-container">
-    <!--   -->
       <div class="search-result-container-item" ng-repeat="post in $ctrl.search | orderBy: $ctrl.propertyName:$ctrl.reverse">
-        <div class="search-result-photo">
-          <img ng-if="post.movie_poster" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{post.movie_poster}}" alt="poster for {{post.movie_title}}" /> 
-          <img ng-if="!post.movie_poster" src="imgs/cover-placeholder.png" alt="poster for {{ post.movie_title }}" /> 
-        </div> 
-        
-        <div class="search-result-contents"><h2>{{post.movie_title}}</h2>
-          <i class="far fa-heart" ng-click="$ctrl.addToWatchList(post.movie_id)">Add to Favorites</i>
-          <p>Popularity: {{post.movie_popularity}}</p>
-          <p>Release Date: {{post.movie_release_date}}</p>
-          <p>Original Language: {{post.movie_original_language}}</p>
-          <!--- fas fa-heart for solid -->
-          <p>{{ post.movie_overview }}</p>
-        </div>
+      <search-result-item post="post" add-to-watchlist="$ctrl.addToWatchList(movieId)"></search-result-item>             
+      </div>
     </div>
 
     <div class="pagination-container" ng-if="$ctrl.searchCompleted === true">
-    <h3>Pagination (this needs to be worked on in terms of UI, but it works)</h3>
       <div class="pagination-link" ng-repeat="link in $ctrl.paginationMenu">
         <div ng-click="$ctrl.fetchMovies(link.search_term, link.page)">{{ link.page }}</div>
       </div>
