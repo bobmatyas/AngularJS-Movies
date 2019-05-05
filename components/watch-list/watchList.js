@@ -13,7 +13,7 @@ function WatchListController(MovieService) {
   angular.module('MovieApp').component('watchlistPage', {
     template: `
         <section id="watch-list">
-            <h3>Watch List</h3>
+            <h1>Watch List</h1>
             <ul>
               <li ng-repeat="item in $ctrl.watchList">{{ item }}</li>
         </section>`, // or use templateUrl

@@ -13,7 +13,8 @@ angular.module('MovieApp').component('searchCriteria', {
             
       <div class="container">
         <input type="text" ng-model="$ctrl.homeSearch" placeholder="Search by Title" />
-        <button ng-click="$ctrl.fetchMovies({search: $ctrl.homeSearch})" id="search-title">Search</button>
+        <button ng-click="$ctrl.fetchMovies({search: $ctrl.homeSearch})" id="search-title"><i class="fa fa-search" aria-hidden="true"></i>
+        Search</button>
         <br>
           
         <div class="search-criteria-container" ng-if="$ctrl.searchCompleted">
