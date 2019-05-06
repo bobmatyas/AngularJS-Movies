@@ -1,4 +1,7 @@
-function SearchResultItemController($scope) {
+function SearchResultItemController($scope, MovieService) {
+  
+  this.service = MovieService;
+  
   $scope.showval = false;
   // $scope.hideval = false;
   $scope.isShowHide = function (param) {
@@ -24,7 +27,8 @@ function SearchResultItemController($scope) {
         </div> 
         
         <div class="search-result-contents"><h2>{{$ctrl.post.movie_title}}</h2>
-          <i class="far fa-heart" ng-click="$ctrl.addToWatchList({movie: $ctrl.post})">Add to Favorites</i>
+          <i class="far fa-heart" ng-click="$ctrl.addToWatchList({movie: $ctrl.post})" ng-if="!$ctrl.service.isInWatchList($ctrl.post)">Add to Favorites</i>
+          <i class="far fa-heart" ng-click="$ctrl.addToWatchList({movie: $ctrl.post})" ng-if="$ctrl.service.isInWatchList($ctrl.post)">Remove from Favorites</i>
           <p>Popularity: {{$ctrl.post.movie_popularity}}</p>
           <p>Release Date: {{$ctrl.post.movie_release_date}}</p>
           <p>Original Language: {{$ctrl.post.movie_original_language}}</p>
@@ -40,6 +44,6 @@ function SearchResultItemController($scope) {
     controller: SearchResultItemController,
     bindings: {
       post: '<',
-      addToWatchList: '<'
+      addToWatchList: '&'
     }
   });

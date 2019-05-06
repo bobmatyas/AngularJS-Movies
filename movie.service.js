@@ -18,11 +18,22 @@ function MovieService(http) {
           }
         } else {
           service.watchList.push(movie);
+          console.log("check");
         }
         console.log(`current watch list: ${service.watchList}`);
       }
     
-    
+    service.isInWatchList = (movie) => {
+      console.log("checking isInWatchList", service.watchList);
+      if (service.watchList.length >= 1) {
+        doesExist = service.watchList.includes(movie);
+        console.log("Checking remove WatchList value", doesExist);
+        return doesExist;
+    }
+    else {
+      return false;
+    }
+  }
 
     service.fetchMovies = (search, page) => {
         // return http.get('&language=en-US&page=1&include_adult=false&query='+search);   
