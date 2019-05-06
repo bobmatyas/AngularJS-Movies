@@ -24,7 +24,7 @@ function SearchResultItemController($scope) {
         </div> 
         
         <div class="search-result-contents"><h2>{{$ctrl.post.movie_title}}</h2>
-          <i class="far fa-heart" ng-click="$ctrl.addToWatchList({movieId: $ctrl.post.movie_id})">Add to Favorites</i>
+          <i class="far fa-heart" ng-click="$ctrl.addToWatchList({movie: $ctrl.post})">Add to Favorites</i>
           <p>Popularity: {{$ctrl.post.movie_popularity}}</p>
           <p>Release Date: {{$ctrl.post.movie_release_date}}</p>
           <p>Original Language: {{$ctrl.post.movie_original_language}}</p>
@@ -40,6 +40,6 @@ function SearchResultItemController($scope) {
     controller: SearchResultItemController,
     bindings: {
       post: '<',
-      addToWatchList: '&'
+      addToWatchList: '<'
     }
   });

@@ -8,6 +8,22 @@ function MovieService(http) {
 
     service.watchList = [];
 
+    service.addToWatchList = (movie) => {
+      console.log(movie);
+ 
+        if (service.watchList.length >= 1) {
+          doesExist = service.watchList.includes(movie);
+          if (doesExist === false) {
+            service.watchList.push(movie);
+          }
+        } else {
+          service.watchList.push(movie);
+        }
+        console.log(`current watch list: ${service.watchList}`);
+      }
+    
+    
+
     service.fetchMovies = (search, page) => {
         // return http.get('&language=en-US&page=1&include_adult=false&query='+search);   
         

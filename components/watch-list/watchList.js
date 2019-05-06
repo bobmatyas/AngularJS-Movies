@@ -7,7 +7,6 @@ function WatchListController(MovieService) {
 
     console.log(ctrl.watchList);
 
-    
 }
   
   angular.module('MovieApp').component('watchlistPage', {
@@ -15,7 +14,9 @@ function WatchListController(MovieService) {
         <section id="watch-list">
             <h1>Watch List</h1>
             <ul>
-              <li ng-repeat="item in $ctrl.watchList">{{ item }}</li>
+              <li ng-repeat="movie in $ctrl.watchList">
+              <search-result-item post="post" add-to-watch-list="$ctrl.addToWatchList(movie)"></search-result-item>              
+              </li>
         </section>`, // or use templateUrl
     controller: WatchListController
   });

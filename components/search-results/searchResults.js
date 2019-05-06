@@ -18,17 +18,9 @@ function SearchResultsController(MovieService, $q, $scope) {
   */
   
 
-  ctrl.addToWatchList = (movieId) => {
-    console.log(`add to watch list clicked`);
-    if (MovieService.watchList.length >= 1) {
-      doesExist = MovieService.watchList.includes(movieId);
-      if (doesExist === false) {
-        MovieService.watchList.push(movieId);
-      }
-    } else {
-      MovieService.watchList.push(movieId);
-    }
-    console.log(`current watch list: ${MovieService.watchList}`);
+  ctrl.addToWatchList = (movie) => {
+    console.log(movie);
+    MovieService.addToWatchList(movie);
   }
 
   // this sets a variable for first page load, changes to "true" if users have searched
@@ -124,7 +116,7 @@ angular.module('MovieApp').component('searchResults', {
 
     <div class="search-result-container">
       <div class="search-result-container-item" ng-repeat="post in $ctrl.search | orderBy: $ctrl.propertyName:$ctrl.reverse">
-      <search-result-item post="post" add-to-watchlist="$ctrl.addToWatchList(movieId)"></search-result-item>             
+      <search-result-item post="post" add-to-watch-list="$ctrl.addToWatchList(movie)"></search-result-item>             
       </div>
     </div>
 
