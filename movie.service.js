@@ -10,30 +10,35 @@ function MovieService(http) {
 
     service.addToWatchList = (movie) => {
       console.log(movie);
- 
-        if (service.watchList.length >= 1) {
-          doesExist = service.watchList.includes(movie);
-          if (doesExist === false) {
-            service.watchList.push(movie);
-          }
-        } else {
-          service.watchList.push(movie);
-          console.log("check");
-        }
+      if (service.isInWatchList(movie.movie_id) !== false) {
+        console.log("already in watchList");
+      }
+      else {
+        service.watchList.push(movie);
+      }
         console.log(`current watch list: ${service.watchList}`);
       }
     
-    service.isInWatchList = (movie) => {
-      console.log("checking isInWatchList", service.watchList);
-      if (service.watchList.length >= 1) {
-        doesExist = service.watchList.includes(movie);
-        console.log("Checking remove WatchList value", doesExist);
-        return doesExist;
+    service.isInWatchList = (movie_id) => {
+
+
+    for (var i = 0 ; i < service.watchList.length; i++) {
+      if (service.watchList[i].movie_id == movie_id) {
+          return i;
+      }
+
     }
-    else {
-      return false;
+    return false;
+  }
+
+  service.removeFromWatchList = (index) => {
+    console.log(index);
+    let i = service.isInWatchList(index);
+    if (i !== false) {
+      service.watchList.splice(i, 1);
     }
   }
+
 
     service.fetchMovies = (search, page) => {
         // return http.get('&language=en-US&page=1&include_adult=false&query='+search);   
