@@ -27,8 +27,13 @@ function SearchResultItemController($scope, MovieService) {
         </div> 
         
         <div class="search-result-contents"><h2>{{$ctrl.post.movie_title}}</h2>
-          <i class="far fa-heart" ng-click="$ctrl.addToWatchList({movie: $ctrl.post})" ng-if="$ctrl.service.isInWatchList($ctrl.post.movie_id)===false">Add to Favorites</i>
-          <i class="fas fa-heart" ng-click="$ctrl.removeFromWatchList({index: $ctrl.post.movie_id})" ng-if="$ctrl.service.isInWatchList($ctrl.post.movie_id)!==false">Remove from Favorites</i>
+          <div class="favorite-button" ng-click="$ctrl.addToWatchList({movie: $ctrl.post})" ng-if="$ctrl.service.isInWatchList($ctrl.post.movie_id)===false">
+            <i class="far fa-heart fa-lg" style="color:red;"></i> Add to Favorites
+          </div>
+          <div class="favorite-button" ng-click="$ctrl.removeFromWatchList({index: $ctrl.post.movie_id})" ng-if="$ctrl.service.isInWatchList($ctrl.post.movie_id)!==false">
+            <i class="fas fa-heart fa-lg" style="color:red; background-color: #F5F5F5;" ></i> Remove from Favorites</i>
+          </div>
+
           <p>Popularity: {{$ctrl.post.movie_popularity}}</p>
           <p>Release Date: {{$ctrl.post.movie_release_date}}</p>
           <p>Original Language: {{$ctrl.post.movie_original_language}}</p>

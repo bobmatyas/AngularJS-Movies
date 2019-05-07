@@ -122,7 +122,7 @@ angular.module('MovieApp').component('searchResults', {
 
     <div class="search-result-container">
       <div class="search-result-container-item" ng-repeat="post in $ctrl.search | orderBy: $ctrl.propertyName:$ctrl.reverse">
-      <search-result-item post="post" add-to-watch-list="$ctrl.addToWatchList(movie)" remove-from-watch-list="$ctrl.removeFromWatchList(index)"></search-result-item>             
+      <search-result-item class="search-result-section" post="post" add-to-watch-list="$ctrl.addToWatchList(movie)" remove-from-watch-list="$ctrl.removeFromWatchList(index)"></search-result-item>             
       </div>
     </div>
 

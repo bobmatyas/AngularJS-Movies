@@ -1,19 +1,29 @@
 * {
     font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
 }
+
+html {
+  font-size: 10px;
+}
+
 /* html {
   background-image: linear-gradient(white, darkslategray);
 } */
+
 main {
-    border: 1px solid grey;
+    border: 1px solid #ccc;
     box-shadow: 3px 3px 2px grey;
     border-radius: 15px;
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: 15%;
+    margin-right: 15%;
     display: flex;
     text-align: center;
     justify-content: center;
     /* padding: 30px; */
+    font-size: 1.8rem;
+    font-weight: 400;
+    min-width: 450px;
 }
 
 main.ng-scope {
@@ -61,7 +71,7 @@ li a:hover, a:active {
   box-shadow: 5cm;
 }
 
-button {
+.button-green {
   background-color:rgb(0, 213, 115);
   color: white;
   height: 50px;
@@ -70,8 +80,14 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px; 
+  font-weight: bold;
   border-radius: 5px;
+  border: none;
   /* margin-bottom: 10px; */
+}
+
+.button-green:hover {
+  cursor: pointer;
 }
 
 /* button:hover, button:active {
@@ -80,12 +96,13 @@ button {
 } */
 
 input {
-  width: 400px;
+  width: 60%;
   margin-bottom: 10px;
   height: 50px;
   padding-left: 10px;
   border-radius: 5px;
   font-size: 16px;
+  border: 1px solid rgb(65, 64, 64);
 }
 
 .showmore {
@@ -99,6 +116,7 @@ input {
   display: inline-block;
   font-size: 16px; 
   border-radius: 5px;
+  border: none;
 
   /* margin-bottom: 10px; */
 }
@@ -118,9 +136,7 @@ margin-bottom: 20px;
 }
 
 .search-result-container-item {
-  display: flex;
-  text-align: left;
-  padding-left: 10px;
+  padding: 5%;
 }
 
 .search-result-container-item.ng-scope {
@@ -142,6 +158,21 @@ justify-content: stretch;
   padding: 10px;
   text-align: center;
 }
+
+.search-result-section {
+  display: flex;
+}
+.search-result-photo {
+  width: 275px;
+}
+
+.favorite-button {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+
+
 
 
 
