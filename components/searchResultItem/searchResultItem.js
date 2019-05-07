@@ -1,3 +1,4 @@
+
 function SearchResultItemController($scope, MovieService) {
   
   this.service = MovieService;

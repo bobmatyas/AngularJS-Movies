@@ -10,9 +10,9 @@ angular
         // Load the home component
         template: "<home></home>"
       })
-      .when("/search-results", {
-        // Load the search-results component
-        template: "<search-results></search-results>"
+      .when("/movie-list", {
+        // Load the movie-list component
+        template: "<movie-list></movie-list>"
       })
       .when("/watch-list", {
         // Load the watch-list component

@@ -14,7 +14,7 @@ function HomeController(MovieService, $q) {
         <section id="home">
 
     <h1>Search Movies</h1>
-  <search-results></search-results>
+  <movie-list></movie-list>
 
         </section>`, // or use templateUrl
     controller: HomeController
