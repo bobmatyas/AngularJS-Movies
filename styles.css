@@ -42,12 +42,6 @@ main {
     margin-top: 200px;
 }
 
-main.ng-scope {
-  background-color:#F5F5F5;
-  width: 50%;
-}
-
-
 .head-nav {
     display: flex;
     justify-content: space-between;
