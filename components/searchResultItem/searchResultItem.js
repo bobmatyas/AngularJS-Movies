@@ -38,13 +38,10 @@ function SearchResultItemController($scope, MovieService) {
           <p>Release Date: {{$ctrl.post.movie_release_date}}</p>
           <p>Original Language: {{$ctrl.post.movie_original_language}}</p>
           <!--- fas fa-heart for solid -->
-          <div>
-            <div >
+
               <input type="button" ng-click="isShowHide('show')" value="Show More" class="showmore"> 
               <br />
-            <div ng-show="showval">{{$ctrl.post.movie_overview}}</div><br />
-          </div>
-          </div>
+            <p class="movie-description" ng-show="showval">{{$ctrl.post.movie_overview}}</p>
         `, // or use templateUrl
     controller: SearchResultItemController,
     bindings: {

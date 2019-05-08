@@ -19,7 +19,8 @@ angular.module('MovieApp').component('searchCriteria', {
           
         <div class="search-criteria-container" ng-if="$ctrl.searchCompleted">
           
-          <label>Sort by Title: 
+          <h3>Sort</h3>
+          <label>By Title: 
             <select id="title" ng-change="$ctrl.sortBy({propertyName: 'movie_title', sortOrder: $ctrl.sort_by_title})" ng-model="$ctrl.sort_by_title">
               <option value="">A to Z</option>
               <option value="reverse">Z to A</option>
@@ -27,7 +28,7 @@ angular.module('MovieApp').component('searchCriteria', {
             </select>
           </label>
 
-          <label>Sort by Popularity: 
+          <label>By Popularity: 
             <select id="popularity" ng-change="$ctrl.sortBy({propertyName: 'movie_popularity', sortOrder: $ctrl.sort_by_popularity})" ng-model="$ctrl.sort_by_popularity">
               <option value="reverse">Highest Rated</option>
               <option value="">Lowest Rated</option>
@@ -35,7 +36,7 @@ angular.module('MovieApp').component('searchCriteria', {
             </select>
           </label>
 
-          <label>Sort by Release Date: 
+          <label>By Date: 
             <select id="releaseDate" ng-change="$ctrl.sortBy({propertyName: 'movie_release_date', sortOrder: $ctrl.sort_by_release_date})" ng-model="$ctrl.sort_by_release_date">
               <option value="reverse">Newest</option>
               <option value="">Oldest</option>

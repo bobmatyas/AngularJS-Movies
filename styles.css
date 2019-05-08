@@ -27,7 +27,7 @@ main {
 }
 
 main.ng-scope {
-  background-color:#F5F5F5;
+  background-color:#eee;
 }
 
 .head-nav {
@@ -132,16 +132,18 @@ button:hover{
 }
 
 .search-criteria-container {
-margin-bottom: 20px;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  padding: 5%;
 }
 
 .search-result-container-item {
   padding: 5%;
 }
 
-.search-result-container-item.ng-scope {
+/* .search-result-container-item.ng-scope {
 justify-content: stretch;
-}
+} */
 
 .search-result-contents {
   padding: 0 25px;
@@ -161,9 +163,12 @@ justify-content: stretch;
 
 .search-result-section {
   display: flex;
+  text-align: left;
 }
 .search-result-photo {
-  width: 275px;
+  width: 185px;
+  padding: 0;
+  margin: 0;
 }
 
 .favorite-button {
@@ -171,7 +176,20 @@ justify-content: stretch;
   font-weight: 600;
 }
 
+.movie-description {
+  font-size: 1.4rem;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
 
+.ng-hide {
+  margin: 0;
+  padding: 0;
+}
+
+display: flex;
+text-align: left;
 
 
 
