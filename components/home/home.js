@@ -11,11 +11,11 @@ function HomeController(MovieService, $q) {
   
   angular.module('MovieApp').component('home', {
     template: `
-        <section id="home">
+      <section id="home">
 
-    <h1>Search Movies</h1>
-  <search-results></search-results>
+        <h1 class="main-title">Find a Movie</h1>
+          <search-results></search-results>
 
-        </section>`, // or use templateUrl
+      </section>`, // or use templateUrl
     controller: HomeController
   });
