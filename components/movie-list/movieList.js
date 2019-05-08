@@ -1,4 +1,4 @@
-function SearchResultsController(MovieService, $q, $scope) {
+function MovieListController(MovieService, $q, $scope) {
   var ctrl = this;
 
 
@@ -113,9 +113,9 @@ function SearchResultsController(MovieService, $q, $scope) {
 
 
 
-angular.module('MovieApp').component('searchResults', {
+angular.module('MovieApp').component('movieList', {
   template: `
-      <section id="search-results">
+      <section id="movie-list">
               
       <search-criteria fetch-movies="$ctrl.fetchMovies(search)" sort-by="$ctrl.sortBy(propertyName, sortOrder)" search-completed="$ctrl.searchCompleted"></search-criteria>
 
@@ -135,5 +135,5 @@ angular.module('MovieApp').component('searchResults', {
       </div>
     </div>
     </section>`, // or use templateUrl
-  controller: SearchResultsController
+  controller: MovieListController
 });

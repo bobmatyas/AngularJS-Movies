@@ -14,7 +14,7 @@ angular.module('MovieApp').component('watchlistPage', {
     template: `
         <section id="watch-list">
             <h1>Watch List</h1>
-            <ul>
+            <ul class="favorites">
               <li ng-repeat="movie in $ctrl.watchList">
               <search-result-item post="movie" add-to-watch-list="$ctrl.addToWatchList(movie)" remove-from-watch-list="$ctrl.removeFromWatchList(index)"></search-result-item>              
               </li>
