@@ -21,25 +21,36 @@ function SearchResultItemController($scope, MovieService) {
 }
   angular.module('MovieApp').component('searchResultItem', {
     template: `
+        <div class="search-result-section">
+
+        <h2 class="heading-movie-title">{{$ctrl.post.movie_title}}</h2>
+        <div class="search-result-inner">
+
         <div class="search-result-photo">
           <img ng-if="$ctrl.post.movie_poster" ng-src="{{$ctrl.post.movie_poster}}" alt="poster for {{$ctrl.post.movie_title}}" /> 
           <img ng-if="!$ctrl.post.movie_poster" ng-src="imgs/cover-placeholder.png" alt="poster for {{ $ctrl.post.movie_title }}" /> 
         </div> 
         
-        <div class="search-result-contents"><h2>{{$ctrl.post.movie_title}}</h2>
-          <i class="far fa-heart" ng-click="$ctrl.addToWatchList({movie: $ctrl.post})" ng-if="$ctrl.service.isInWatchList($ctrl.post.movie_id)===false">Add to Favorites</i>
-          <i class="far fa-heart" ng-click="$ctrl.removeFromWatchList({index: $ctrl.post.movie_id})" ng-if="$ctrl.service.isInWatchList($ctrl.post.movie_id)!==false">Remove from Favorites</i>
-          <p>Popularity: {{$ctrl.post.movie_popularity}}</p>
-          <p>Release Date: {{$ctrl.post.movie_release_date}}</p>
-          <p>Original Language: {{$ctrl.post.movie_original_language}}</p>
-          <!--- fas fa-heart for solid -->
-          <div>
-            <div >
-              <input type="button" ng-click="isShowHide('show')" value="Show More" class="showmore"> 
+        <div class="search-result-contents">
+          <div class="favorite-button" ng-click="$ctrl.addToWatchList({movie: $ctrl.post})" ng-if="$ctrl.service.isInWatchList($ctrl.post.movie_id)===false">
+            <i class="far fa-heart fa-lg" style="color: #D50062;"></i> <span style="color: #D50062;">Favorite</span>
+          </div>
+          <div class="favorite-button" ng-click="$ctrl.removeFromWatchList({index: $ctrl.post.movie_id})" ng-if="$ctrl.service.isInWatchList($ctrl.post.movie_id)!==false">
+            <i class="fas fa-heart fa-lg" style="color: #D50062; background-color: #fff;" ></i> <span style="color: #D50062;">Remove</span></i>
+          </div>
+
+          <table class="movie-meta">
+            <tr><td><b>Average Rating:</td><td> {{$ctrl.post.movie_popularity}}</td></tr>
+          <tr><td><b>Number of Votes:</b></td><td> {{ $ctrl.post.movie_vote_count}}</td></tr>
+          <tr><td><b>Release Date:</b></td><td> {{$ctrl.post.movie_release_date}}</td></tr>
+          </table>
+
+              <input type="button" ng-click="isShowHide('show')" value="See More" class="showmore"> 
               <br />
-            <div ng-show="showval">{{$ctrl.post.movie_overview}}</div><br />
-          </div>
-          </div>
+            <p class="movie-description" ng-show="showval">{{$ctrl.post.movie_overview}}</p>
+        </div>
+        </div>
+      </div>  
         `, // or use templateUrl
     controller: SearchResultItemController,
     bindings: {

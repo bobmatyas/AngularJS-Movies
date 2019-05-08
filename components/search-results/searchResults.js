@@ -76,6 +76,7 @@ function SearchResultsController(MovieService, $q, $scope) {
               movie_popularity: child.vote_average,
               movie_release_date: child.release_date,
               movie_original_language: child.original_language,
+              movie_vote_count: child.vote_count
             }
 
             ctrl.search.push(childObj);
@@ -121,6 +122,8 @@ angular.module('MovieApp').component('searchResults', {
 
 
     <div class="search-result-container">
+
+    <h2 ng-if="$ctrl.searchCompleted" class="main-title">Results</h2>
       <div class="search-result-container-item" ng-repeat="post in $ctrl.search | orderBy: $ctrl.propertyName:$ctrl.reverse">
       <search-result-item post="post" add-to-watch-list="$ctrl.addToWatchList(movie)" remove-from-watch-list="$ctrl.removeFromWatchList(index)"></search-result-item>             
       </div>

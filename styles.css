@@ -1,29 +1,54 @@
 * {
     font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
 }
+
+html {
+  font-size: 10px;
+}
+
 /* html {
   background-image: linear-gradient(white, darkslategray);
 } */
-main {
-    border: 1px solid grey;
-    box-shadow: 3px 3px 2px grey;
-    border-radius: 15px;
-    margin-left: 300px;
-    margin-right: 300px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    /* padding: 30px; */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eee3;
 }
 
-main.ng-scope {
-  background-color:#F5F5F5;
+header {
+  background-color: #eee;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-bottom: 2px solid #ccc;
+  min-width: 450px;
 }
+
+main {
+    /* border: 1px solid #ccc;
+    box-shadow: 3px 3px 2px grey; */
+    border-radius: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    /* padding: 30px; */
+    font-size: 1.8rem;
+    font-weight: 400;
+    min-width: 450px;
+    margin-top: 200px;
+}
+
+
 
 .head-nav {
     display: flex;
     justify-content: space-between;
-    margin: 15px;
+    margin: 0;
+    padding: 10px;
 }
 
 .logo {
@@ -61,7 +86,7 @@ li a:hover, a:active {
   box-shadow: 5cm;
 }
 
-button {
+.button-green {
   background-color:rgb(0, 213, 115);
   color: white;
   height: 50px;
@@ -70,8 +95,14 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px; 
+  font-weight: bold;
   border-radius: 5px;
+  border: none;
   /* margin-bottom: 10px; */
+}
+
+.button-green:hover {
+  cursor: pointer;
 }
 
 /* button:hover, button:active {
@@ -80,12 +111,14 @@ button {
 } */
 
 input {
-  width: 400px;
+  width: 60%;
   margin-bottom: 10px;
   height: 50px;
   padding-left: 10px;
   border-radius: 5px;
   font-size: 16px;
+  border: 1px solid rgb(173, 170, 170);
+  color: #666666;
 }
 
 .showmore {
@@ -99,6 +132,8 @@ input {
   display: inline-block;
   font-size: 16px; 
   border-radius: 5px;
+  border: none;
+  margin: 20px 0;
 
   /* margin-bottom: 10px; */
 }
@@ -114,21 +149,44 @@ button:hover{
 }
 
 .search-criteria-container {
-margin-bottom: 20px;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  padding: 5%;
+  background-color: #dffaed;
+  border-radius: 15px;
 }
 
 .search-result-container-item {
-  display: flex;
-  text-align: left;
-  padding-left: 10px;
 }
 
-.search-result-container-item.ng-scope {
+/* .search-result-container-item.ng-scope {
 justify-content: stretch;
-}
+} */
 
 .search-result-contents {
-  padding: 0 25px;
+  padding: 0 0 0 25px;
+  width: 100%;
+}
+
+.heading-filter {
+  color: #3e3f41;
+  border-bottom: 2px solid #1b3d63;
+  font-size: 1.8rem;
+}
+.search-criteria-filters {
+  padding: 0;
+  margin: 0;
+}
+
+.search-criteria-labels-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.search-criteria-filters label {
+  font-weight: bold;
+  color: #3e413f;
 }
 
 .pagination-container {
@@ -143,20 +201,63 @@ justify-content: stretch;
   text-align: center;
 }
 
+.search-result-section {
+  text-align: left;
+  border: 1px solid #eee;
+  padding: 5%;
+  border-radius: 15px;
+  margin: 25px 0;
+  box-shadow: 3px 3px 2px #eee;
+  background-color: #fff;
+}
 
 
+.search-result-inner {
+  display: flex;
+}
 
+.search-result-photo {
+  width: 185px;
+  padding: 0;
+  margin: 0;
+}
 
+.favorite-button {
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: right;
+}
 
+.movie-description {
+  font-size: 1.8rem;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  line-height: 2.5rem;
+}
 
+.movie-meta {
+  font-size: 1.6rem;
+}
+.ng-hide {
+  margin: 0;
+  padding: 0;
+}
 
+.main-title {
+  font-family: 'Montserrat', sans-serif;
+  border-bottom: 4px solid #80eab9;
+  font-weight: 3.1rem;
+  padding: 0 5px;
+  font-weight: 600;
+  color: #3e413f;
+}
 
-
-
-
-
-
-
-
-
-
+.heading-movie-title {
+  font-family: 'Montserrat', sans-serif;
+  border-bottom: 4px solid #9FEFCB;
+  font-weight: 600;
+  font-size: 3.5rem;
+  color: #3e413f;
+  margin: 0 0 25px 0;
+}
