@@ -14,6 +14,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-color: #eee3;
 }
 
 header {
@@ -203,10 +204,11 @@ justify-content: stretch;
 .search-result-section {
   text-align: left;
   border: 1px solid #eee;
-  padding: 2% 5%;
+  padding: 5%;
   border-radius: 15px;
   margin: 25px 0;
   box-shadow: 3px 3px 2px #eee;
+  background-color: #fff;
 }
 
 
@@ -257,4 +259,5 @@ justify-content: stretch;
   font-weight: 600;
   font-size: 3.5rem;
   color: #3e413f;
+  margin: 0 0 25px 0;
 }
