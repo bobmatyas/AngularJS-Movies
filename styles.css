@@ -198,6 +198,7 @@ justify-content: stretch;
   border: 1px solid #ddd; /* Gray */
   padding: 10px;
   text-align: center;
+  cursor: pointer;
 }
 
 .search-result-section {
@@ -229,6 +230,7 @@ justify-content: stretch;
   font-size: 1.6rem;
   font-weight: 600;
   text-align: right;
+  cursor: pointer;
 }
 
 .movie-description {
@@ -263,4 +265,16 @@ justify-content: stretch;
   font-size: 3.5rem;
   color: #3e413f;
   margin: 0 0 25px 0;
+}
+
+#title {
+  cursor: pointer;
+}
+
+#popularity {
+  cursor: pointer;
+}
+
+#releaseDate {
+  cursor: pointer;
 }
