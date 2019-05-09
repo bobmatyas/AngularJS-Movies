@@ -3,6 +3,8 @@ function SearchResultItemController($scope, MovieService) {
   
   this.service = MovieService;
   
+  const ctrl = this;
+
   $scope.showval = false;
   // $scope.hideval = false;
   $scope.isShowHide = function (param) {
@@ -19,6 +21,13 @@ function SearchResultItemController($scope, MovieService) {
   $scope.hideval = false;
   }
   }
+
+  ctrl.dateFormat = (date) => {
+    let dateCheck = new Date(date);
+    let dateFormatted = dateCheck.toLocaleDateString();
+    return dateFormatted;
+  }
+
 }
   angular.module('MovieApp').component('searchResultItem', {
     template: `
@@ -43,7 +52,7 @@ function SearchResultItemController($scope, MovieService) {
           <table class="movie-meta">
             <tr><td><b>Average Rating:</td><td> {{$ctrl.post.movie_popularity}}</td></tr>
           <tr><td><b>Number of Votes:</b></td><td> {{ $ctrl.post.movie_vote_count}}</td></tr>
-          <tr><td><b>Release Date:</b></td><td> {{$ctrl.post.movie_release_date}}</td></tr>
+          <tr><td><b>Release Date:</b></td><td> {{ $ctrl.dateFormat($ctrl.post.movie_release_date)}}</td></tr>
           </table>
 
               <input type="button" ng-click="isShowHide('show')" value="See More" class="showmore"> 
