@@ -134,11 +134,11 @@ input {
   border-radius: 5px;
   border: none;
   margin: 20px 0;
-
+  cursor: pointer;
   /* margin-bottom: 10px; */
 }
 
-.showmore:hover{
+.showmore:hover {
   background-color:darkslategrey;
   box-shadow: 5cm;
 }
@@ -156,12 +156,6 @@ button:hover{
   border-radius: 15px;
 }
 
-.search-result-container-item {
-}
-
-/* .search-result-container-item.ng-scope {
-justify-content: stretch;
-} */
 
 .search-result-contents {
   padding: 0 0 0 25px;
