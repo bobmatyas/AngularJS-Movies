@@ -14,6 +14,9 @@ angular
         // Load the movie-list component
         template: "<movie-list></movie-list>"
       })
+      .when('/movie/:id', {
+        template: '<movie-details></movie-details>'
+      })
       .when("/watch-list", {
         // Load the watch-list component
         template: "<watchlist-page></watchlist-page>"

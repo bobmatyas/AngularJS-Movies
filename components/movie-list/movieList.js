@@ -89,6 +89,8 @@ function MovieListController(MovieService, $q, $scope) {
         });
     });
   };
+
+
   /**
    * This section handles the sorting filters. 
    */
@@ -125,7 +127,7 @@ angular.module('MovieApp').component('movieList', {
 
     <h2 ng-if="$ctrl.searchCompleted" class="main-title">Results</h2>
       <div class="search-result-container-item" ng-repeat="post in $ctrl.search | orderBy: $ctrl.propertyName:$ctrl.reverse">
-      <search-result-item post="post" add-to-watch-list="$ctrl.addToWatchList(movie)" remove-from-watch-list="$ctrl.removeFromWatchList(index)"></search-result-item>             
+      <search-result-item post="post" add-to-watch-list="$ctrl.addToWatchList(movie)" remove-from-watch-list="$ctrl.removeFromWatchList(index)" get-movie-details="$ctrl.getMovieDetails(id)"></search-result-item>             
       </div>
     </div>
 

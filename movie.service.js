@@ -1,11 +1,6 @@
 function MovieService(http) {
     const service = this;
 
-       /**
-     * Call https://www.reddit.com/r/aww/.json
-     * and set ctrl.feed to be the results
-     */
-
     service.watchList = [];
 
     service.addToWatchList = (movie) => {
@@ -40,7 +35,7 @@ function MovieService(http) {
   }
 
 
-    service.fetchMovies = (search, page) => {
+  service.fetchMovies = (search, page) => {
         // return http.get('&language=en-US&page=1&include_adult=false&query='+search);   
         
         // sets default page to 1 //
@@ -58,7 +53,18 @@ function MovieService(http) {
           }
         });
         
-    }
+  }
+
+  
+  service.getMovieDetail = (id) => {
+    console.log(`movie service called`);
+    // allows for more confusing construction
+
+    let movieRequestURL = `https://api.themoviedb.org/3/movie/${ id }?api_key=ef7cff1004c652447b441abaac24655a`;
+
+    return http.get(movieRequestURL);
+    
+  }
 };
     
 
