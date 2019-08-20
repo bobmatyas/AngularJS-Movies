@@ -51,7 +51,7 @@ angular.module('MovieApp').component('movieDetails', {
       <p class="genre-list" ng-if="$ctrl.contentToShow.data.genres"><strong>Genres:</strong> <ul class="genre-list"> <li ng-repeat="genre in $ctrl.contentToShow.data.genres"> {{ genre.name }}</li></ul></p>
       </li></ul>
       <p ng-if="$ctrl.contentToShow.data.original_language"><strong>Language:</strong> {{ $ctrl.contentToShow.data.original_language }}</p>
-      <p ng-if="$ctrl.contentToShow.data.homepage"><strong>Official Website:</strong><br> <a href="{{ $ctrl.contentToShow.data.homepage }}" target=_blank>{{ $ctrl.contentToShow.data.homepage }}</a></p>
+      <p ng-if="$ctrl.contentToShow.data.homepage"><strong>Official Website:</strong><br> <a href="{{ $ctrl.contentToShow.data.homepage }}" class="website__link" target=_blank>{{ $ctrl.contentToShow.data.homepage }}</a></p>
 
     </section>`, // or use templateUrl
   controller: MovieDetailsController

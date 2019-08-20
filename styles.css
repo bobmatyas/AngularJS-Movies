@@ -33,6 +33,7 @@ main {
     font-weight: 400;
     min-width: 450px;
     margin-top: 200px;
+    padding-bottom: 75px;
 }
 
 .head-nav {
@@ -280,4 +281,12 @@ button:hover{
   font-size: 2.5rem;
   color: #3e413f;
   margin: 0 0 25px 0;
+}
+
+#movie-list p a:link, #movie-list p a:link a:visited {
+  color: rgb(0, 213, 115);
+}
+
+#movie-list p a:hover, #movie-list p a:active {
+  text-decoration: none;
 }
