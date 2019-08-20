@@ -7,10 +7,6 @@ html {
   font-size: 10px;
 }
 
-/* html {
-  background-image: linear-gradient(white, darkslategray);
-} */
-
 body {
   margin: 0;
   padding: 0;
@@ -30,12 +26,9 @@ header {
 }
 
 main {
-    /* border: 1px solid #ccc;
-    box-shadow: 3px 3px 2px grey; */
     border-radius: 15px;
     margin-left: 5%;
     margin-right: 5%;
-    /* padding: 30px; */
     font-size: 1.8rem;
     font-weight: 400;
     min-width: 450px;
@@ -47,16 +40,13 @@ main {
     justify-content: space-between;
     margin: 0;
     padding: 10px;
+    align-items: center;
 }
 
 .logo {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     padding-top: 10px;
     margin-left: 20px;
-    width: 75%;
-    height: 75%;
+    width: 85px;
 }
 
 .head-ul {
