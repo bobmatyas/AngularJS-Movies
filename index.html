@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title> The Movie DB </title>
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,600" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMontserrat:400,600" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
@@ -15,7 +15,7 @@
     <header>
         <nav class="head-nav">    
             <div class="logo-div">
-                <a href="#!/home"><img class="logo"  src="logo.svg"></a>
+                <a href="#!/home"><img class="logo" src="logo.svg" alt="movie database logo"></a>
             </div>
             <ul class="head-ul">   
                 <li><a href="#!/watch-list"><i class="fas fa-heart"></i> Watch List</a></li>
@@ -24,7 +24,7 @@
     </header>
 
     <main id="main" ng-view>
-        <!--- Anything configured in the route is going to be injected into here--->
+        <!-- Anything configured in the route is going to be injected into here -->
     </main>
 
     
@@ -38,6 +38,7 @@
     <script src="components/watch-list/watchList.js"></script>
     <script src="components/search-criteria/searchCriteria.js"></script>
     <script src="components/searchResultItem/searchResultItem.js"></script>
+    <script src="components/movie-details/movieDetails.js"></script>
     <script src="app.config.js"></script>
     <script src="movie.service.js"></script>
 

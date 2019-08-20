@@ -1,5 +1,5 @@
 
-function SearchResultItemController($scope, MovieService) {
+function SearchResultItemController($scope, $q, MovieService) {
   
   this.service = MovieService;
   
@@ -28,6 +28,8 @@ function SearchResultItemController($scope, MovieService) {
     return dateFormatted;
   }
 
+
+
 }
   angular.module('MovieApp').component('searchResultItem', {
     template: `
@@ -55,10 +57,13 @@ function SearchResultItemController($scope, MovieService) {
           <tr><td><b>Release Date:</b></td><td> {{ $ctrl.dateFormat($ctrl.post.movie_release_date)}}</td></tr>
           </table>
 
-              <input type="button" ng-click="isShowHide('show')" value="See More" class="showmore"> 
-              <br />
-            <p class="movie-description" ng-show="showval">{{$ctrl.post.movie_overview}}</p>
-        </div>
+            <h3>Description</h3>
+
+            <p class="movie-description">{{$ctrl.post.movie_overview}}</p>
+        
+            <a href="#!/movie/{{$ctrl.post.movie_id}}" class="showmore">View More</a>
+
+          </div>
         </div>
       </div>  
         `, // or use templateUrl
