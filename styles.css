@@ -16,7 +16,7 @@ body {
 header {
   background-color: #eee;
   margin: 0;
-  padding: 0;
+  padding: 2% 5%;
   position: fixed;
   width: 100%;
   top: 0;
@@ -40,14 +40,21 @@ main {
     display: flex;
     justify-content: space-between;
     margin: 0;
-    padding: 10px;
-    align-items: center;
+    padding: 0;
 }
 
+
 .logo {
-    padding-top: 10px;
-    margin-left: 20px;
-    width: 85px;
+    display: flex;
+    margin: 0;
+    color: #00637a;
+}
+
+.logo-inner {
+  font-family: 'Lobster', cursive;
+  font-size: 3.4rem;
+  margin-top: -5px;
+  margin-left: -25px;
 }
 
 .head-ul {
@@ -55,15 +62,14 @@ main {
     flex-direction: row;
     justify-content: flex-end;
     list-style-type: none; 
-    width: 60%;
-    margin-right: 20px;
-    margin-top: 30px;  
+    margin: 0;
+    padding: 0;
 }
 
 li a:link, a:visited {
     background-color:rgb(0, 213, 115);
     color: white;
-    padding: 14px 25px;
+    padding: 12px;
     text-align: center; 
     text-decoration: none;
     display: inline-block;
